@@ -21,5 +21,5 @@ COPY ./root/relion /root/relion
 RUN yum install -y openmpi-devel openmpi fftw-devel fltk-devel libtiff-devel patch
 ENV PATH=/usr/lib64/openmpi/bin:$PATH
 RUN sh /root/relion/build.sh
-
-
+ENV PATH=/usr/local/relion/bin:$PATH
+RUN yum install -y ImageMagick
