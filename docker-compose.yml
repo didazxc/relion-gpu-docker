@@ -1,0 +1,31 @@
+version: '3'
+services:
+  mysql:
+    image: "mysql:5.7"
+    restart: always
+    volumes:
+      - /var/lib/mysql:/var/lib/mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=YueXinShiDai
+    ports:
+      - "33066:3306"
+  queue:
+    build: ./queue
+    volumes:
+      - /media/zhangtaotao/软件/work/linux-vue/element-in-laravel-starter:/var/www
+      - /media/zhangtaotao/软件/work/xinyue/app:/app/app
+      - /media/zhangtaotao/软件/work/xinyue/test:/home/test
+    command: ["/usr/bin/php","/var/www/artisan","queue:work","--queue=yx"]
+    links:
+      - mysql
+  web:
+    build: ./web
+    volumes:
+      - /media/zhangtaotao/软件/work/linux-vue/element-in-laravel-starter:/var/www
+      - /media/zhangtaotao/软件/work/xinyue/app:/app/app
+      - /media/zhangtaotao/软件/work/xinyue/test:/home/test
+    ports:
+      - "80:80"
+    links:
+      - mysql
+  
