@@ -12,7 +12,7 @@ services:
   queue:
     build: ./queue
     volumes:
-      - ${WWWDIR}:/var/www
+      - ${WWW_DIR}:/var/www
       - ${APP_DIR}:/app/app
       - ${PROJECT_DIR}:/home/test
     command: ["/usr/bin/php","/var/www/artisan","queue:work","--queue=yx"]
@@ -21,7 +21,7 @@ services:
   web:
     build: ./web
     volumes:
-      - ${WWWDIR}:/var/www
+      - ${WWW_DIR}:/var/www
       - ${APP_DIR}:/app/app
       - ${PROJECT_DIR}:/home/test
     ports:
