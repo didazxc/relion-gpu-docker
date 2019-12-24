@@ -12,18 +12,18 @@ services:
   queue:
     build: ./queue
     volumes:
-      - /media/zhangtaotao/软件/work/linux-vue/test:/var/www
-      - /media/zhangtaotao/软件/work/xinyue/app:/app/app
-      - /media/zhangtaotao/软件/work/xinyue/test:/home/test
+      - ${DIR}/test:/var/www
+      - ${DIR}/app:/app/app
+      - ${DIR}/test:/home/test
     command: ["/usr/bin/php","/var/www/artisan","queue:work","--queue=yx"]
     links:
       - mysql
   web:
     build: ./web
     volumes:
-      - /media/zhangtaotao/软件/work/linux-vue/test:/var/www
-      - /media/zhangtaotao/软件/work/xinyue/app:/app/app
-      - /media/zhangtaotao/软件/work/xinyue/test:/home/test
+      - ${DIR}/test:/var/www
+      - ${DIR}/app:/app/app
+      - ${DIR}/test:/home/test
     ports:
       - "80:80"
     links:
