@@ -9,7 +9,7 @@ RUN useradd relion
 RUN rpm -Uvh http://nginx.org/packages/centos/7/noarch/RPMS/nginx-release-centos-7-0.el7.ngx.noarch.rpm
 RUN yum install -y nginx
 
-# install php7.1
+# install php7.2
 RUN rpm -Uvh https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
 RUN rpm -Uvh https://mirror.webtatic.com/yum/el7/webtatic-release.rpm
 RUN yum install -y php72w php72w-fpm php72w-cli php72w-common php72w-devel php72w-gd php72w-pdo php72w-mysqlnd php72w-mbstring php72w-bcmath php72w-dom
@@ -49,6 +49,7 @@ RUN php composer-setup.php --install-dir=/usr/local/bin --filename=composer
 
 # conf
 COPY ./app/default.conf /etc/nginx/conf.d/default.conf
+COPY ./app/www.conf /etc/php-fpm.d/www.conf
 RUN sed -i "s/daemonize = yes/daemonize = no/g" /etc/php-fpm.conf
 EXPOSE 80 9000
 
