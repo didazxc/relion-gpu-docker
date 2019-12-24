@@ -18,7 +18,7 @@ RUN yum install -y php72w php72w-fpm php72w-cli php72w-common php72w-devel php72
 RUN yum install -y mysql
 
 # install php-composer
-RUN php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
+RUN php -r "copy('https://install.phpcomposer.com/installer', 'composer-setup.php');"
 RUN php composer-setup.php --install-dir=/usr/local/bin --filename=composer
 
 ## install cuda
