@@ -4,7 +4,7 @@ services:
     image: "mysql:5.7"
     restart: always
     volumes:
-      - /var/lib/mysql:/var/lib/mysql
+      - ${MYSQL_DIR}:/var/lib/mysql
     environment:
       - MYSQL_ROOT_PASSWORD=YueXinShiDai
     ports:
