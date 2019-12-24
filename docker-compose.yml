@@ -12,18 +12,18 @@ services:
   queue:
     build: ./queue
     volumes:
-      - ${DIR}/test:/var/www
-      - ${DIR}/app:/app/app
-      - ${DIR}/test:/home/test
+      - ${WWWDIR}:/var/www
+      - ${APP_DIR}:/app/app
+      - ${PROJECT_DIR}:/home/test
     command: ["/usr/bin/php","/var/www/artisan","queue:work","--queue=yx"]
     links:
       - mysql
   web:
     build: ./web
     volumes:
-      - ${DIR}/test:/var/www
-      - ${DIR}/app:/app/app
-      - ${DIR}/test:/home/test
+      - ${WWWDIR}:/var/www
+      - ${APP_DIR}:/app/app
+      - ${PROJECT_DIR}:/home/test
     ports:
       - "80:80"
     links:
