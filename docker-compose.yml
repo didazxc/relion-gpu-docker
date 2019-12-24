@@ -12,7 +12,7 @@ services:
   queue:
     build: ./queue
     volumes:
-      - /media/zhangtaotao/软件/work/linux-vue/element-in-laravel-starter:/var/www
+      - /media/zhangtaotao/软件/work/linux-vue/test:/var/www
       - /media/zhangtaotao/软件/work/xinyue/app:/app/app
       - /media/zhangtaotao/软件/work/xinyue/test:/home/test
     command: ["/usr/bin/php","/var/www/artisan","queue:work","--queue=yx"]
@@ -21,7 +21,7 @@ services:
   web:
     build: ./web
     volumes:
-      - /media/zhangtaotao/软件/work/linux-vue/element-in-laravel-starter:/var/www
+      - /media/zhangtaotao/软件/work/linux-vue/test:/var/www
       - /media/zhangtaotao/软件/work/xinyue/app:/app/app
       - /media/zhangtaotao/软件/work/xinyue/test:/home/test
     ports:
