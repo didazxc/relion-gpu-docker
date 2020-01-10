@@ -26,8 +26,34 @@
     docker run --rm -it --gpus all nvidia/cuda:10.1-cudnn7-runtime-centos7 nvidia-smi
     ```
 
-3. 启动
+3. 初次启动
+
+    a. 首先请配置.env文件，分别填写
+    * WWW_DIR 网站根目录
+    * APP_DIR 运行脚本根目录
+    * PROJECT_DIR 项目所在根目录
+    * MYSQL_DIR 数据库根目录
+    
+    b. 构建容器并启动
     ```shell script
     docker-compose up
     ```
-   将会自动构建容器并启动
+    
+    c. 数据初始化
+    ```shell script
+    docker exec docker_web_1 sh init.sh
+    ```
+   
+4. 启动与停止
+    
+    与docker-compose一样
+    ```shell script
+    #启动
+    docker-compose start
+    #停止
+    docker-compose stop
+    #创建容器
+    docker-compose up
+    #删除容器
+    docker-compose down
+    ```
