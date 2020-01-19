@@ -15,7 +15,6 @@ services:
       - ${WWW_DIR}:/var/www
       - ${APP_DIR}:/app/app
       - ${PROJECT_DIR}:/home/test
-    command: ["/usr/bin/php","/var/www/artisan","queue:work","--queue=yx"]
     links:
       - mysql
   web:

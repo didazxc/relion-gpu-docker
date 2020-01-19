@@ -31,8 +31,9 @@ RUN /opt/conda/bin/pip install mrcfile numpy
 
 #conf
 COPY ./app/entrypoint.sh /app/
+COPY ./app/supervisord.conf /etc/supervisord.conf
 COPY ./app/laravel-worker.ini /etc/supervisord.d/
 
 
 ENTRYPOINT ["/app/entrypoint.sh"]
-CMD ["bash"]
+CMD ["supervisord"]
